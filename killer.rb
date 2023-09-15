@@ -1,7 +1,8 @@
-class killer < Sprite
-    attr_accessor :
+class Killer < Sprite
+    attr_accessor :life
 
     def initialize(x, y, image)
+        @life = 3
     end
     
     #自己位置の更新(矢印キーで操作)
@@ -15,5 +16,10 @@ class killer < Sprite
         self.x += Input.x * 2
         self.y += Input.y * 2
         sleep(2)
+    end
+
+    #攻撃が当たった時の処理
+    def shot(survivor)
+        @life -= 1
     end
 

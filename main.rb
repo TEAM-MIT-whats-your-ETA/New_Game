@@ -5,9 +5,20 @@ require_relative 'killer'
 require_relative 'item'
 require_relative 'map'
 
+#画像,フォントの呼び出し
 font = Font.new(32)
-survivor_img = Image.load("image/survivor.png")
-killer_img = Image.load("image/killer.png")
+survivor_img = Image.load("images/survivor_img.png")
+survivor_red_img = Image.load("images/survivor_red.png")
+survivor_green_img = Image.load("images/survivor_green.png")
+survivor_blue_img = Image.load("images/survivor_blue.png")
+killer_img = Image.load("images/killer_img.png")
+item_red_img = Image.load("images/red.png")
+item_green_img = Image.load("images/green.png")
+item_blue_img = Image.load("images/blue.png")
+
+#初期位置
+survivor = Survivor.new(100, 100, survivor_img)
+killer = Killer.new(150, 100, killer_img)
 
 Window.loop do
     #時間設定
@@ -36,9 +47,10 @@ Window.loop do
     Window.draw_font(10, 32, "TIME：#{timer/60}sec", font) 
     
     #衝突判定
-    Sprite.check(survivor, map)
-    Sprite.check(killer, map)
-    Sprite.check(survivor, item)
+    Sprite.check(survivor, item.red)
+    Sprite.check(survivor, item.blue)
+    Sprite.check(survivor, item.green)
+    Sprite.check(survivor, killer)
 end
 
 
