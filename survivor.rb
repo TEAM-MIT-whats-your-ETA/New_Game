@@ -31,7 +31,7 @@ class Survivor < Sprite
             timer -= 1
 
             if timer == 179
-                self.image = survivor_red_img
+                self.image = item_red_img
             elsif timer == 0
                 self.image = survivor_img
             end
@@ -49,7 +49,7 @@ class Survivor < Sprite
             timer -= 1
 
             if timer == 179
-                self.image = survivor_blue_img
+                self.image = item_blue_img
             elsif timer == 0
                 self.image = survivor_img
             end
@@ -68,7 +68,7 @@ class Survivor < Sprite
             timer -= 1
 
             if timer == 179
-                self.image = survivor_green_img
+                self.image = item_green_img
             elsif timer == 0
                 self.image = survivor_img
             end

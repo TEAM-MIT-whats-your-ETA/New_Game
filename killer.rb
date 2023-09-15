@@ -1,10 +1,4 @@
 class Killer < Sprite
-    attr_accessor :life
-
-    def initialize(x, y, image)
-        @life = 3
-    end
-    
     #自己位置の更新(矢印キーで操作)
     def update
         self.x += Input.x

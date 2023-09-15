@@ -8,11 +8,6 @@ require_relative 'item'
 #画像,フォントの呼び出し
 font = Font.new(32)
 survivor_img = Image.load("images/survivor_img.png")
-=begin
-survivor_red_img = Image.load("images/red.png")
-survivor_green_img = Image.load("images/green.png")
-survivor_blue_img = Image.load("images/blue.png")
-=end
 killer_img = Image.load("images/killer_img.png")
 item_red_img = Image.load("images/red.png")
 item_green_img = Image.load("images/green.png")
@@ -21,12 +16,10 @@ item_blue_img = Image.load("images/blue.png")
 #初期位置
 survivor = Survivor.new(100, 100, survivor_img)
 killer = Killer.new(150, 100, killer_img)
+item_red = Item_red.new(105, 105, item_red_img)
 timer = 60 * 60
 
 Window.loop do
-    #時間設定
-    
-
     #自己位置の更新
     if timer >= 60
         timer -= 1
@@ -38,7 +31,7 @@ Window.loop do
     survivor.draw
     killer.draw
     #map.draw
-    #item.draw
+    item_red.draw
 
     #キラーの攻撃
     if Input.mouse_push?(M_LBUTTON)
@@ -57,8 +50,5 @@ Window.loop do
 =end    
     Sprite.check(survivor, killer)
 end
-
-
-
 
 
