@@ -93,7 +93,6 @@ map2 = [
   [nil, nil, nil, nil, nil, nil, nil, nil, nil, 4, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil]
 ]
 
-
 # 絵のデータを作る
 mapimage = []
 mapimage.push(Image.new(32, 32, [100, 100, 200])) # 海
@@ -153,6 +152,7 @@ Window.loop do
 
 end
 =end
+
 
 #Window.loop doの中身
   # ベースマップをrt_mainに描画
