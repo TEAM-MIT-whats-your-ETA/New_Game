@@ -1,4 +1,4 @@
-class item_blue < Sprite
+class item_red < Sprite
   def hit
     self.vanish
   end
@@ -10,7 +10,7 @@ class item_blue < Sprite
   end
 end
 
-class item_blue < Sprite
+class item_green < Sprite
   def hit
     self.vanish
   end
