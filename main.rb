@@ -17,6 +17,8 @@ item_blue_img = Image.load("images/blue.png")
 survivor = Survivor.new(100, 100, survivor_img)
 killer = Killer.new(150, 100, killer_img)
 item_red = Item_red.new(105, 105, item_red_img)
+item_red = Item_red.new(105, 105, item_red_img)
+item_red = Item_red.new(105, 105, item_red_img)
 timer = 60 * 60
 
 Window.loop do
