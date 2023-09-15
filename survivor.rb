@@ -22,7 +22,7 @@ class Survivor < Sprite
     end
 
     #プレイヤー画像を一定時間赤色に入れ替える
-    def hit(item.red)
+    def hit(item_red)
 
         #効果時間の設定
         timer = 180
@@ -36,11 +36,11 @@ class Survivor < Sprite
                 self.image = survivor__img
             end
 
-            break if timer =< 0
+            break if timer <= 0
         end
     end
-
-"""
+end
+=begin
     #プレイヤー画像を一定時間青色に入れ替える
     def hit(item.blue)
         
@@ -72,6 +72,4 @@ class Survivor < Sprite
             player = Player.new(self.x, self.y, survivor__img)
         end
     end
-"""
-
-end
+=end
