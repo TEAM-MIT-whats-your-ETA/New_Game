@@ -3,7 +3,7 @@ require 'dxruby'
 require_relative 'survivor'
 require_relative 'killer'
 require_relative 'item'
-#require_relative 'map'
+require_relative 'map1'
 
 #画像,フォントの呼び出し
 font = Font.new(32)
