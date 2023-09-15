@@ -20,7 +20,10 @@ item_blue_img = Image.load("images/blue.png")
 survivor = Survivor.new(100, 100, survivor_img)
 killer = Killer.new(150, 100, killer_img)
 
+
+
 Window.loop do
+    
     #時間設定
     timer = 60 * 60
 
@@ -47,9 +50,9 @@ Window.loop do
     Window.draw_font(10, 32, "TIME：#{timer/60}sec", font) 
     
     #衝突判定
-    Sprite.check(survivor, item.red)
-    Sprite.check(survivor, item.blue)
-    Sprite.check(survivor, item.green)
+    Sprite.check(survivor, item.item_red)
+    Sprite.check(survivor, item.item_blue)
+    Sprite.check(survivor, item.item_green)
     Sprite.check(survivor, killer)
 end
 
