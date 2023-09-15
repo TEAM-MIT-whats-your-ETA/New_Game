@@ -1,5 +1,7 @@
 require 'dxruby'
 
+sound = Sound.new("sound/攻撃.wav")
+
 require_relative 'survivor'
 require_relative 'killer'
 require_relative 'item'
@@ -25,6 +27,10 @@ state = 0
 
 
 Window.loop do
+    if Input.key_push?(K_Z) then  # Zキーで再生
+        sound.play
+    end
+
     case state
     when 0
         start_img = Image.load("images/start_img.png")
@@ -51,6 +57,7 @@ Window.loop do
 
         #キラーの攻撃
         if Input.mouse_push?(M_LBUTTON)
+            sound.play
             killer.attack
         end
 
