@@ -11,9 +11,5 @@ class Killer < Sprite
         self.y += Input.y * 2
         sleep(2)
     end
-
-    #攻撃が当たった時の処理
-    def shot(survivor)
-        @life -= 1
-    end
+    
 end
