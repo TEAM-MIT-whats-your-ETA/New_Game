@@ -22,4 +22,4 @@ class Killer < Sprite
     def shot(survivor)
         @life -= 1
     end
-
+end
