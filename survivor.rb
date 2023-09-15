@@ -39,7 +39,6 @@ class Survivor < Sprite
             break if timer <= 0
         end
     end
-
     #プレイヤー画像を一定時間青色に入れ替える
     def hit(item_blue)
         
