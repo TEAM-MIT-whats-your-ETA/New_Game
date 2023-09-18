@@ -82,7 +82,6 @@ break if Input.keyPush?(K_ESCAPE)
         #サバイバー,キラー,マップの表示
         survivor.draw
         killer.draw
-        #map.draw
         item_red.draw
         item_blue.draw
         item_green.draw
