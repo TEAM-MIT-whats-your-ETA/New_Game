@@ -59,26 +59,6 @@ Window.loop do
             survivor.update
             killer.update
         end
-
-        # ベースマップをrt_mainに描画
-$rt_main.drawTile(0, 0, $map1, $mapimage, 0 ,0, 1280, 960)
-$rt_main.update
-
-# 上層マップをrt_subに描画
-$rt_sub.drawTile(0, 0, $map2, $mapimage, 0, 0, 1280, 960)
-$rt_sub.update
-
-
-# ベースマップを画面に描画
-Window.draw(0, 0, $rt_main)
-
-
-# 上層マップを画面に描画
-Window.draw(0, 0, $rt_sub)
-
-# エスケープキーで終了
-break if Input.keyPush?(K_ESCAPE)
-    
         #サバイバー,キラー,マップの表示
         survivor.draw
         killer.draw
