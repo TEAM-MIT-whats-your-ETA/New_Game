@@ -3,7 +3,7 @@
 #require 'dxruby'
 
 # マップデータ
-class map
+class Map
   def map1
       $map1 = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1],
@@ -120,8 +120,8 @@ class map
       
 
   end
-end
 
+end
 =begin
 #fulscreen
   Window.width  = 1280 
