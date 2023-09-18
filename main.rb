@@ -2,6 +2,9 @@ require 'dxruby'
 
 $sound = Sound.new("sound/攻撃.wav")
 $BGM = Sound.new("sound/雨.wav")
+$game_bgm = Sound.new("sound/かけっこ競争.wav")
+$continue_bgm = Sound.new("sound/禁止区.wav")
+$end_bgm = Sound.new("sound/エンド.wav")
 require_relative 'survivor'
 require_relative 'killer'
 require_relative 'item'
@@ -39,13 +42,15 @@ $pause2_start_time = 0
 $pause2_duration = 3
 $item_start_time = 0
 $item_duration = 3
+
 ini1 = true
 ini2 = true
+ini3 = true
+ini4 = true
 
 #fulscreen
 Window.width  = 1280
 Window.height = 960
-Window.full_screen=(true)
 
 Window.loop do
     
@@ -65,7 +70,8 @@ Window.loop do
 
     #自己位置の更新
     when 1
-        if ini2 
+        if ini2
+            $game_bgm.play
             # ベースマップをrt_mainに描画
             $rt_main.drawTile(0, 0, $map1, $mapimage, 0 ,0, 1280, 960)
             $rt_main.update
@@ -120,15 +126,25 @@ Window.loop do
             Sprite.check(killer, survivor)
         end
         if survivor.life == 0
+            $game_bgm.stop
             state = 2
         elsif timer == 59
+            $game_bgm.stop
             state = 3
         end 
     when 2
+        if ini3
+            $continue_bgm.play
+            ini3 = false
+        end 
         dead_img = Image.load("images/dead_img.png")
         Window.draw(0,0,dead_img)
 
     when 3
+        if ini4
+            $end_bgm.play
+            ini4 = false
+        end
         ending_img = Image.load("images/ending_img.png")
         Window.draw(0,0,ending_img)
     end

@@ -11,6 +11,7 @@ class Survivor < Sprite
                 $red = false
                 $green = false
                 $blue = false
+                $collision = true
                 $item_collision = true
             end
         end
@@ -19,6 +20,7 @@ class Survivor < Sprite
             if (Time.now - $pause2_start_time) >= $pause2_duration
                 $paused2 = false
             end
+        
         elsif $red
             #Wキーで上に移動
             if Input.key_down?(K_W)
