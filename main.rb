@@ -21,10 +21,12 @@ killer = Killer.new(150, 100, killer_img)
 item_red = Item_red.new(105, 105, item_red_img)
 item_blue = Item_blue.new(200, 200, item_blue_img)
 item_green = Item_green.new(205, 205, item_green_img)
-timer = 5 * 60
-collision = true
+timer = 60 * 60
+$collision = true
 state = 0
-
+$paused = false
+$pause_start_time = 0
+$pause_duration = 3
 
 Window.loop do
     if Input.key_push?(K_Z) then  # Zキーで再生
@@ -69,8 +71,9 @@ Window.loop do
         Sprite.check(survivor, item_red)
         Sprite.check(survivor, item_blue)
         Sprite.check(survivor, item_green)
-        Sprite.check(killer, survivor)
-        
+        if $collision    
+            Sprite.check(killer, survivor)
+        end
         if survivor.life == 0
             state = 2
         elsif timer == 59
