@@ -1,6 +1,7 @@
 require 'dxruby'
 
 $sound = Sound.new("sound/攻撃.wav")
+$bgm = Sound.new("sound/雨.wav")
 
 require_relative 'survivor'
 require_relative 'killer'
@@ -44,6 +45,7 @@ Window.height = 960
 Window.full_screen=(true)
 
 Window.loop do
+    $bgm.play
     case state
     when 0
         start_img = Image.load("images/start_img.png")
