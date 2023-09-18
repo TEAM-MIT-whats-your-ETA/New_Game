@@ -1,7 +1,3 @@
-# マップデータから背景描画サンプル
-# RenderTargetクラスの使い方のサンプルになっています。
-#require 'dxruby'
-
 # マップデータ
 class Map
   def map1
@@ -94,7 +90,7 @@ class Map
       mapimage[2].boxFill(13, 0, 18, 28, [200, 50, 50])
       mapimage.push(Image.new(32, 32, [50, 200, 50]))   # 山
       for i in 1..30 do
-      mapimage[3].line(15 - i/2, i, 16 + i/2, i, [40, 110, 35])
+        mapimage[3].line(15 - i/2, i, 16 + i/2, i, [40, 110, 35])
       end
       mapimage.push(Image.new(32, 32))                       # 木のあたま。背景は透明色にしておく。
       mapimage[4].boxFill(13, 16, 18, 31, [200, 50, 50])
@@ -106,40 +102,5 @@ class Map
       $rt_sub  = RenderTarget.new(1280-32, 960-32)
 
       $mapimage = mapimage
-
-      
-
   end
-
 end
-
-=begin
-#fulscreen
-  Window.width  = 1280 
-  Window.height = 960
-  Window.full_screen=(true)
-
-
-Window.loop do
-
-      # ベースマップをrt_mainに描画
-      $rt_main.drawTile(0, 0, $map1, $mapimage, 0 ,0, 1280, 960)
-      $rt_main.update
-
-      # 上層マップをrt_subに描画
-      $rt_sub.drawTile(0, 0, $map2, $mapimage, 0, 0, 1280, 960)
-      $rt_sub.update
-
-
-  # ベースマップを画面に描画
-  Window.draw(0, 0, $rt_main)
-
-
-  # 上層マップを画面に描画
-  Window.draw(0, 0, $rt_sub)
-
-  # エスケープキーで終了
-  break if Input.keyPush?(K_ESCAPE)
-
-end
-=end
