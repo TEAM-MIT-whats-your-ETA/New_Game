@@ -26,11 +26,11 @@ item_green_img = Image.load("images/green.png")
 item_blue_img = Image.load("images/blue.png")
 
 #初期位置
-survivor = Survivor.new(80, 80, survivor_img, 3)
-killer = Killer.new(150, 100, killer_img)
-item_red = Item_red.new(105, 105, item_red_img)
-item_blue = Item_blue.new(200, 200, item_blue_img)
-item_green = Item_green.new(205, 205, item_green_img)
+survivor = Survivor.new(20*32, 10*32, survivor_img, 3)
+killer = Killer.new(9*32, 10*32, killer_img)
+item_red = Item_red.new(256, 128, item_red_img)
+item_blue = Item_blue.new(800, 320, item_blue_img)
+item_green = Item_green.new(256, 512, item_green_img)
 timer = 60 * 60
 $collision = true
 $item_collision = true
@@ -38,9 +38,12 @@ state = 0
 $red = false
 $green = false
 $blue = false
-$paused = false
-$pause_start_time = 0
-$pause_duration = 3
+$paused1 = false
+$pause1_start_time = 0
+$pause1_duration = 3
+$paused2 = false
+$pause2_start_time = 0
+$pause2_duration = 3
 $item_start_time = 0
 $item_duration = 3
 

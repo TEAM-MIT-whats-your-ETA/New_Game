@@ -7,65 +7,103 @@ class Survivor < Sprite
 
     def update
         if $red || $green || $blue
-            if (Time.now - $item_start_time) > $item_duration
+            if (Time.now - $item_start_time) >= $item_duration
                 $red = false
                 $green = false
                 $blue = false
                 $item_collision = true
             end
         end
-        if $red
+        
+        if $green
+            if (Time.now - $pause2_start_time) >= $pause2_duration
+                $paused2 = false
+            end
+        elsif $red
             #Wキーで上に移動
             if Input.key_down?(K_W)
-                self.y -= 2
+                tmp1 = $map1[((self.y - 2 + 9) / 32)][((self.x + 9) / 32)]
+                tmp2 = $map2[((self.y - 2 + 9) / 32)][((self.x + 9) / 32)]
+                if ((tmp1 == 1 || tmp1 == 5) && tmp2 == nil)   #境界且つ壁かどうか判定
+                    self.y -= 2
+                end
             end
     
             #Sキーで下に移動
             if Input.key_down?(K_S)
-                self.y += 2
+                tmp1 = $map1[((self.y + 2 + 9) / 32)][((self.x + 9) / 32)]
+                tmp2 = $map2[((self.y + 2 + 9) / 32)][((self.x + 9) / 32)]
+                if ((tmp1 == 1 || tmp1 == 5) && tmp2 == nil)   #境界且つ壁かどうか判定
+                    self.y += 2
+                end
             end
     
             #Aキーで左に移動
             if Input.key_down?(K_A)
-                self.x -= 2
+                tmp1 = $map1[((self.y + 9) / 32)][((self.x - 2 + 9) / 32)]
+                tmp2 = $map2[((self.y + 9) / 32)][((self.x - 2 + 9) / 32)]
+                if ((tmp1 == 1 || tmp1 == 5) && tmp2 == nil)   #境界且つ壁かどうか判定
+                    self.x -= 2
+                end
             end
     
             #Dキーで右に移動
             if Input.key_down?(K_D)
-                self.x += 2
+                tmp1 = $map1[((self.y + 9) / 32)][((self.x + 2 + 9) / 32)]
+                tmp2 = $map2[((self.y + 9) / 32)][((self.x + 2 + 9) / 32)]
+                if ((tmp1 == 1 || tmp1 == 5) && tmp2 == nil)   #境界且つ壁かどうか判定
+                    self.x += 2
+                end
             end
-        if $blue
+        elsif $blue
             $collision = false
-        end
+        
         else
             if Input.key_down?(K_W)
-                self.y -= 1
+                tmp1 = $map1[((self.y - 1 + 9) / 32)][((self.x + 9) / 32)]
+                tmp2 = $map2[((self.y - 1 + 9) / 32)][((self.x + 9) / 32)]
+                if ((tmp1 == 1 || tmp1 == 5) && tmp2 == nil)   #境界且つ壁かどうか判定
+                    self.y -= 1
+                end
+                
             end
     
             #Sキーで下に移動
             if Input.key_down?(K_S)
-                self.y += 1
+                tmp1 = $map1[((self.y + 1 + 9) / 32)][((self.x + 9) / 32)]
+                tmp2 = $map2[((self.y + 1 + 9) / 32)][((self.x + 9) / 32)]
+                if ((tmp1 == 1 || tmp1 == 5) && tmp2 == nil)   #境界且つ壁かどうか判定
+                    self.y += 1
+                end
             end
     
             #Aキーで左に移動
             if Input.key_down?(K_A)
-                self.x -= 1
+                tmp1 = $map1[((self.y + 9) / 32)][((self.x - 1 + 9) / 32)]
+                tmp2 = $map2[((self.y + 9) / 32)][((self.x - 1 + 9) / 32)]
+                if ((tmp1 == 1 || tmp1 == 5) && tmp2 == nil)   #境界且つ壁かどうか判定
+                    self.x -= 1
+                end
             end
     
             #Dキーで右に移動
             if Input.key_down?(K_D)
-                self.x += 1
+                tmp1 = $map1[((self.y + 9) / 32)][((self.x + 1 + 9) / 32)]
+                tmp2 = $map2[((self.y + 9) / 32)][((self.x + 1 + 9) / 32)]
+                if ((tmp1 == 1 || tmp1 == 5) && tmp2 == nil)   #境界且つ壁かどうか判定
+                    self.x += 1
+                end
             end
         end
     end
 
     def hit(killer)
-        @life -= 1
+        if $blue == false
+            @life -= 1
+        end
         if @life == 0
             self.vanish
         end
-        collision = false
-        return collision
     end
 
 end
