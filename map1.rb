@@ -1,10 +1,10 @@
 # マップデータから背景描画サンプル
 # RenderTargetクラスの使い方のサンプルになっています。
-require 'dxruby'
+#require 'dxruby'
 
 # マップデータ
-#class map
-  #def map1
+class map
+  def map1
       $map1 = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1],
@@ -119,10 +119,10 @@ require 'dxruby'
 
       
 
-  #end
-#end
+  end
+end
 
-
+=begin
 #fulscreen
   Window.width  = 1280 
   Window.height = 960
@@ -151,3 +151,4 @@ Window.loop do
   break if Input.keyPush?(K_ESCAPE)
 
 end
+=end
