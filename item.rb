@@ -20,6 +20,7 @@ class Item_green < Sprite
   def hit(survivor)
     self.vanish
     $green = true
+    $pause2_start_time = Time.now
     $item_collision = false
     $item_start_time = Time.now
   end

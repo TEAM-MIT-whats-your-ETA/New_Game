@@ -100,7 +100,7 @@ class Map
       mapimage = []
       mapimage.push(Image.new(32, 32, [100, 100, 200])) # 海
       mapimage.push(Image.new(32, 32, [50, 200, 50]))   # 平地
-      mapimage.push(Image.new(32, 32, [50, 200, 50]))   # 木の根元
+      mapimage.push(Image.new(32, 32, [0, 0, 0]))   # 木の根元
       mapimage[2].boxFill(13, 0, 18, 28, [200, 50, 50])
       mapimage.push(Image.new(32, 32, [50, 200, 50]))   # 山
       for i in 1..30 do
