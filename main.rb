@@ -2,6 +2,7 @@ require 'dxruby'
 
 $sound = Sound.new("sound/攻撃.wav")
 $BGM = Sound.new("sound/雨.wav")
+$continue_bgm = Sound.new("sound/禁止区.wav")
 
 require_relative 'survivor'
 require_relative 'killer'
@@ -40,11 +41,12 @@ $item_duration = 3
 
 ini1 = true
 ini2 = true
+ini3 = true
 
 #fulscreen
 Window.width  = 1280 
 Window.height = 960
-Window.full_screen=(true)
+#Window.full_screen=(true)
 
 Window.loop do
     
@@ -60,6 +62,9 @@ Window.loop do
         if Input.keyPush?(K_SPACE)
             $BGM.stop
             state = 1
+        end
+        if Input.keyPush?(K_ESCAPE)
+            
         end
 
     #自己位置の更新
@@ -87,10 +92,6 @@ Window.loop do
         item_blue.draw
         item_green.draw
 
-        #キラーの攻撃
-        if Input.mouse_push?(M_LBUTTON)
-            killer.attack
-        end
 
         #残りライフとタイマーの表示
         Window.draw_font(10, 0, "LIFE：#{survivor.life}", font)
@@ -110,10 +111,15 @@ Window.loop do
         elsif timer == 59
             state = 3
         end 
-    when 2
-        dead_img = Image.load("images/dead_img.png")
-        Window.draw(0,0,dead_img)
 
+    when 2
+        if ini3
+            $continue_bgm.play
+            ini3 = false
+        end
+
+        dead_img = Image.load("images/dead_img.png")
+        Window.draw(0,0,dead_img)    
     when 3
         ending_img = Image.load("images/ending_img.png")
         Window.draw(0,0,ending_img)
