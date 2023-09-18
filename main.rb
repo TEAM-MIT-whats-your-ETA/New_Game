@@ -81,7 +81,7 @@ Window.loop do
 
         # エスケープキーで終了
         break if Input.keyPush?(K_ESCAPE)
-    
+      
         #サバイバー,キラー,マップの表示
         survivor.draw
         killer.draw

@@ -1,7 +1,3 @@
-# マップデータから背景描画サンプル
-# RenderTargetクラスの使い方のサンプルになっています。
-require 'dxruby'
-
 # マップデータ
 class Map
   def map1
@@ -117,5 +113,4 @@ class Map
 
       $mapimage = mapimage
   end
-
 end
