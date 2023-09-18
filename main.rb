@@ -2,6 +2,7 @@ require 'dxruby'
 
 $sound = Sound.new("sound/攻撃.wav")
 $BGM = Sound.new("sound/雨.wav")
+
 require_relative 'survivor'
 require_relative 'killer'
 require_relative 'item'
@@ -19,11 +20,11 @@ item_green_img = Image.load("images/green.png")
 item_blue_img = Image.load("images/blue.png")
 
 #初期位置
-survivor = Survivor.new(32, 32, survivor_img, 3)
-killer = Killer.new(128, 128, killer_img)
-item_red = Item_red.new(256, 128, item_red_img)
-item_blue = Item_blue.new(128, 256, item_blue_img)
-item_green = Item_green.new(256, 512, item_green_img)
+survivor = Survivor.new(80, 80, survivor_img, 3)
+killer = Killer.new(150, 100, killer_img)
+item_red = Item_red.new(105, 105, item_red_img)
+item_blue = Item_blue.new(200, 200, item_blue_img)
+item_green = Item_green.new(205, 205, item_green_img)
 timer = 60 * 60
 $collision = true
 $item_collision = true
@@ -36,11 +37,12 @@ $pause_start_time = 0
 $pause_duration = 3
 $item_start_time = 0
 $item_duration = 3
+
 ini1 = true
 ini2 = true
 
 #fulscreen
-Window.width  = 1280
+Window.width  = 1280 
 Window.height = 960
 Window.full_screen=(true)
 
@@ -78,16 +80,6 @@ Window.loop do
             survivor.update
             killer.update
         end
-
-        #ベースマップを画面に描画
-        Window.draw(0, 0, $rt_main)
-
-        #上層マップを画面に描画
-        Window.draw(0, 0, $rt_sub)
-
-        # エスケープキーで終了
-        break if Input.keyPush?(K_ESCAPE)
-    
         #サバイバー,キラー,マップの表示
         survivor.draw
         killer.draw
@@ -95,18 +87,15 @@ Window.loop do
         item_blue.draw
         item_green.draw
 
+        #キラーの攻撃
+        if Input.mouse_push?(M_LBUTTON)
+            killer.attack
+        end
+
         #残りライフとタイマーの表示
         Window.draw_font(10, 0, "LIFE：#{survivor.life}", font)
-        Window.draw_font(10, 32, "TIME：#{timer/60}sec", font)
-        if $item_collision == false
-            if $red
-                Window.draw_font(10, 64, "ITEM：RED", font)
-            elsif $blue
-                Window.draw_font(10, 64, "ITEM：BLUE", font)
-            else
-                Window.draw_font(10, 64, "ITEM：GREEN", font)
-            end
-        end
+        Window.draw_font(10, 32, "TIME：#{timer/60}sec", font) 
+    
         #衝突判定
         if $item_collision
             Sprite.check(survivor, item_red)
