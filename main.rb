@@ -8,7 +8,6 @@ $BGM = Sound.new("sound/雨.wav")
 $game_bgm = Sound.new("sound/かけっこ競争.wav")
 $continue_bgm = Sound.new("sound/禁止区.wav")
 $end_bgm = Sound.new("sound/エンド.wav")
-
 require_relative 'survivor'
 require_relative 'killer'
 require_relative 'item'
@@ -51,12 +50,11 @@ ini1 = true
 ini2 = true
 ini3 = true
 ini4 = true
-ini5 = true
+
 
 #fulscreen
 Window.width  = 1280 
 Window.height = 960
-#Window.full_screen=(true)
 
 Window.loop do
     
@@ -79,12 +77,10 @@ Window.loop do
 
     #自己位置の更新
     when 1
-        if ini5
-            $game_bgm.play
-            ini5 = false
-        end
 
-        if ini2 
+        if ini2
+            $game_bgm.play
+
             # ベースマップをrt_mainに描画
             $rt_main.drawTile(0, 0, $map1, $mapimage, 0 ,0, 1280, 960)
             $rt_main.update
@@ -126,6 +122,7 @@ Window.loop do
             $game_bgm.stop
             state = 2
         elsif timer == 59
+            $game_bgm.stop
             state = 3
         end 
 
@@ -133,7 +130,10 @@ Window.loop do
         if ini3
             $continue_bgm.play
             ini3 = false
-        end
+ 
+        end 
+        dead_img = Image.load("images/dead_img.png")
+        Window.draw(0,0,dead_img)
 
         dead_img = Image.load("images/dead_img.png")
         Window.draw(0,0,dead_img)    
