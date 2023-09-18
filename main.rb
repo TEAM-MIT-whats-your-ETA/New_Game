@@ -21,10 +21,17 @@ item_blue = Item_blue.new(200, 200, item_blue_img)
 item_green = Item_green.new(205, 205, item_green_img)
 timer = 60 * 60
 $collision = true
+$item_collision = true
 state = 0
+$red = false
+$green = false
+$blue = false
 $paused = false
 $pause_start_time = 0
 $pause_duration = 3
+$item_start_time = 0
+$item_duration = 3
+
 
 Window.loop do
     case state
@@ -61,9 +68,11 @@ Window.loop do
         Window.draw_font(10, 32, "TIME：#{timer/60}sec", font) 
     
         #衝突判定
-        Sprite.check(survivor, item_red)
-        Sprite.check(survivor, item_blue)
-        Sprite.check(survivor, item_green)
+        if $item_collision
+            Sprite.check(survivor, item_red)
+            Sprite.check(survivor, item_blue)
+            Sprite.check(survivor, item_green)
+        end
         if $collision    
             Sprite.check(killer, survivor)
         end
