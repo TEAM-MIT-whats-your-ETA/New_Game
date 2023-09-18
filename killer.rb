@@ -21,6 +21,7 @@ class Killer < Sprite
     end
 
     def shot(survivor)
+        $sound.play
         $paused = true
         $pause_start_time = Time.now
         $collision = false
