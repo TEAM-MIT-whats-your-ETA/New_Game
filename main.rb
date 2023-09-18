@@ -25,8 +25,13 @@ timer = 5 * 60
 collision = true
 state = 0
 
+#fulscreen
+Window.width  = 1280 
+Window.height = 960
+Window.full_screen=(true)
 
 Window.loop do
+=begin
     if Input.key_push?(K_Z) then  # Zキーで再生
         sound.play
     end
@@ -84,5 +89,23 @@ Window.loop do
         ending_img = Image.load("images/ending_img.png")
         Window.draw(0,0,ending_img)
     end
+=end
+# ベースマップをrt_mainに描画
+$rt_main.drawTile(0, 0, $map1, $mapimage, 0 ,0, 1280, 960)
+$rt_main.update
 
+# 上層マップをrt_subに描画
+$rt_sub.drawTile(0, 0, $map2, $mapimage, 0, 0, 1280, 960)
+$rt_sub.update
+
+
+# ベースマップを画面に描画
+Window.draw(0, 0, $rt_main)
+
+
+# 上層マップを画面に描画
+Window.draw(0, 0, $rt_sub)
+
+# エスケープキーで終了
+break if Input.keyPush?(K_ESCAPE)
 end
