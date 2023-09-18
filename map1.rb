@@ -5,7 +5,7 @@
 # マップデータ
 class Map
   def map1
-      map1 = [
+      $map1 = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1],
       [1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -50,7 +50,7 @@ class Map
       ]
 
       # 手前に描画する用の上層マップデータ（4は木のあたま。nilにすると描画しない）
-      map2 = [
+      $map2 = [
       [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 4, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
       [nil, 4, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 4, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
       [nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 4, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 4, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil],
@@ -112,15 +112,16 @@ class Map
 
       mapimage.push(Image.new(32, 32, [95, 60, 35])) #橋   
       # RenderTarget作成
-      rt_main = RenderTarget.new(1280-32, 960-32)
-      rt_sub  = RenderTarget.new(1280-32, 960-32)
+      $rt_main = RenderTarget.new(1280-32, 960-32)
+      $rt_sub  = RenderTarget.new(1280-32, 960-32)
+
+      $mapimage = mapimage
 
       
 
   end
 
 end
-
 =begin
 #fulscreen
   Window.width  = 1280 
@@ -131,20 +132,20 @@ end
 Window.loop do
 
       # ベースマップをrt_mainに描画
-      rt_main.drawTile(0, 0, map1, mapimage, 0 ,0, 1280, 960)
-      rt_main.update
+      $rt_main.drawTile(0, 0, $map1, $mapimage, 0 ,0, 1280, 960)
+      $rt_main.update
 
       # 上層マップをrt_subに描画
-      rt_sub.drawTile(0, 0, map2, mapimage, 0, 0, 1280, 960)
-      rt_sub.update
+      $rt_sub.drawTile(0, 0, $map2, $mapimage, 0, 0, 1280, 960)
+      $rt_sub.update
 
 
   # ベースマップを画面に描画
-  Window.draw(0, 0, rt_main)
+  Window.draw(0, 0, $rt_main)
 
 
   # 上層マップを画面に描画
-  Window.draw(0, 0, rt_sub)
+  Window.draw(0, 0, $rt_sub)
 
   # エスケープキーで終了
   break if Input.keyPush?(K_ESCAPE)
